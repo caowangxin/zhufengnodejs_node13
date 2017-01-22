@@ -46,6 +46,22 @@ nrm add feng http://172.18.0.199
 nrm del 源的名字
 ```
 
+## 搭建博客(自动生成 hexo)
+- 唯一性 一个github账号只能有一个
+``` 
+npm install hexo-cli -g
+```
+### 生成博客
+```
+mkdir jwTest && cd jwTest
+hexo init
+```
 
+### 启动服务
+```
+hexo server -p 5000
+```
+
+> 生成博客的工具
 
 
