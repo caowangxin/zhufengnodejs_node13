@@ -64,4 +64,16 @@ hexo server -p 5000
 
 > 生成博客的工具
 
-
+## 发布github
+- 安装一次在当前项目下即可
+```
+npm install hexo-deployer-git --save
+```
+## 重新生成
+```
+hexo g
+```
+## 发布
+```
+hexo deploy
+```
