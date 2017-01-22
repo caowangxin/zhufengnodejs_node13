@@ -73,7 +73,27 @@ npm install hexo-deployer-git --save
 ```
 hexo g
 ```
+> 每次发布前需要重新生成代码
 ## 发布
 ```
 hexo deploy
+```
+
+## gh-pages
+gh-pages分支的名字，提供静态页的展示
+- 初始化仓库
+```
+git init 
+```
+- 建立联系
+```
+git remote add origin <repo url>
+```
+- 创建并切换分支
+```
+git checkout -b gh-pages
+```
+- 推送
+```
+git commit -a -m 'push'
 ```
