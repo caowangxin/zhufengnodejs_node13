@@ -73,7 +73,9 @@ npm install hexo-deployer-git --save
 ```
 hexo g
 ```
+
 > 每次发布前需要重新生成代码
+
 ## 发布
 ```
 hexo deploy
@@ -97,3 +99,16 @@ git checkout -b gh-pages
 ```
 git commit -a -m 'push'
 ```
+
+## node基础buffer fs events stream
+
+## http +ajax 
+
+## express + cookie +session 
+
+## mongodb +  博客
+
+## 聊天室socket.io + 爬虫 
+
+## 实战 投票系统
+
