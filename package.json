@@ -10,6 +10,7 @@
     "type": "git",
     "url": "git+https://github.com/zhufengzhufeng/zhufengnodejs_node13.git"
   },
+  "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
@@ -17,7 +18,7 @@
   },
   "homepage": "https://github.com/zhufengzhufeng/zhufengnodejs_node13#readme",
   "dependencies": {
-    "jquery": "^3.1.1"
+    "angular": "^1.6.1"
   },
   "devDependencies": {
     "gulp": "^3.9.1"
