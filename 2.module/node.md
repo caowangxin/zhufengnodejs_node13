@@ -54,3 +54,26 @@ bower install gulp --save-dev
 ```
 bower install 
 ```
+
+## 指定目录安装文件
+```
+touch .bowerrc 
+{"directory":"lib/js"}
+```
+
+## 显示版本号
+```
+npm info jquery
+bower info jquery
+```
+
+## bower安装指定版本
+```
+bower install jquery#3.0.0 --save
+
+```
+
+## npm安装制定版本
+```
+npm install jquery@3.0.0 --save
+```
