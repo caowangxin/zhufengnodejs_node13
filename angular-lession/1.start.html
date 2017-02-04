@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="zfModule">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训http://www.zhufengpeixun.cn</title>
+</head>
+<body>
+<!--
+    框架 angular（被动） 库 react jquery（主动）
+    框架调用我们写好的代码   我们调他的代码
+-->
+<div ng-controller="firstCtrl">
+    <!--{{}}可以取$scope上的数据-->
+    <!--ng-model实现双向数据绑定的 只能放置变量名-->
+    <input type="text" ng-model="name">
+    <!--1.可以三元表达式 2.可以赋值运算 3.运算表达式-->
+    {{name==100?1:name}}
+</div>
+<script src="angular.js"></script>
+<script>
+    //1.让angular自己启动 ng-app
+    //1.模块的名字 2.模块的依赖 3.配置
+    //2.一切从模块开始
+    angular.module('zfModule',[])
+    .controller('firstCtrl',function ($scope) {
+        //$scope就是viewModel 我们将数据要挂载在vm上
+        $scope.name = 100;
+    });
+</script>
+</body>
+</html>
