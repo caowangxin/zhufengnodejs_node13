@@ -33,12 +33,13 @@
                 <tr>
                     <td colspan="3">
                         <button class="btn btn-danger" ng-click="removeAll()">删除全部</button>
-                        总价：5666
-                        <select >
-                            <option value="">1折</option>
-                            <option value="">5折</option>
+                        总价：{{total()}}
+                        <!--[{name:'打一折',val:0.1},{name:'打五折',val:0.5}]-->
+                        <select ng-model="co">
+                            <!--当co的值和val值相等时才会选择某一个-->
+                            <option value="{{c.val}}" ng-repeat="c in coast">{{c.name}}</option>
                         </select>
-                        折后价格：566.6
+                        折后价格： {{total()*co}}
                     </td>
                 </tr>
             </table>
@@ -64,6 +65,7 @@
     var app = angular.module('zfModule', []);
     app.controller("cartCtrl", ["$scope", "$rootScope", function ($scope) {
         $scope.arrs = [{name: "iphone", price: 2888},{name: "iphone", price: 2888}];
+        $scope.co = '0.5';
         $scope.removeOne = function (product) {
             //数组的filter 返回true表示留下 返回false 删除，返回一个新的数组
             $scope.arrs = $scope.arrs.filter(function (item) {
@@ -82,6 +84,15 @@
         };
         $scope.reset = function () {
             $scope.product = {};
+        };
+
+        //如果当前作用域下有任何一个值发生变化就会触发total
+        $scope.total = function () {
+            var total = 0;
+            $scope.arrs.forEach(function (item) {
+                total+=item.price;
+            });
+            return total;
         };
         $scope.coast = [{name:'打一折',val:0.1},{name:'打五折',val:0.5}]
     }]);
