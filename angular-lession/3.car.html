@@ -8,6 +8,12 @@
         [ng-cloak]{
             display: none;
         }
+        .red{
+            background: #00b3ee;
+        }
+        .green{
+            background: #afd9ee;
+        }
     </style>
 </head>
 <body ng-controller="cartCtrl">
@@ -23,9 +29,9 @@
                     <th class="text-center">商品价格</th>
                     <th class="text-center">操作</th>
                 </tr>
-                <tr class="text-center" ng-repeat="item in arrs" ng-cloak>
+                <tr class="text-center" ng-repeat="item in arrs" ng-cloak ng-class-odd="'red'"  ng-class-even="'green'">
                     <td>{{item.name}}</td>
-                    <td>{{item.price}}</td>
+                    <td>{{item.price | currency:'￥'}}</td>
                     <td>
                         <button class="btn btn-danger btn-xs" ng-click="removeOne(item)">删除</button>
                     </td>
@@ -67,7 +73,8 @@
 <script>
     var app = angular.module('zfModule', []);
     app.controller("cartCtrl", ["$scope", "$rootScope", function ($scope) {
-        $scope.arrs = [{name: "iphone", price: 2888},{name: "iphone", price: 2888}];
+        $scope.arrs = [{name: "iphone", price: 1300},{name: "iphone", price: 888},{name: "iphone", price: 999},{name: "iphone", price: 2888},{name: "iphone", price: 1090},{name: "iphone", price: 20000},{name: "iphone", price: 300}];
+        //偶数行 是绿色  奇数行是红色
         $scope.co = '0.5';
         $scope.removeOne = function (product) {
             //数组的filter 返回true表示留下 返回false 删除，返回一个新的数组
