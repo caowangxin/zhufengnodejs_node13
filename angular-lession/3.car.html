@@ -26,10 +26,10 @@
                 <caption class="h3 text-warning">购物车</caption>
                 <tr>
                     <th class="text-center">商品名称</th>
-                    <th class="text-center">商品价格</th>
+                    <th class="text-center" ng-click="flag=!flag">商品价格</th>
                     <th class="text-center">操作</th>
                 </tr>
-                <tr class="text-center" ng-repeat="item in arrs" ng-cloak ng-class-odd="'red'"  ng-class-even="'green'">
+                <tr class="text-center" ng-repeat="item in arrs | orderBy:'price':flag" ng-cloak ng-class-odd="'red'"  ng-class-even="'green'">
                     <td>{{item.name}}</td>
                     <td>{{item.price | currency:'￥'}}</td>
                     <td>

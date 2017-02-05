@@ -15,6 +15,9 @@
 <!--{{1123123123.123123123 | number:2}}-->
 <!--<pre>{{ {name:1,age:1} | json }}</pre>-->
 <!--orderBy 排序-->
+<!--默认ng-model绑定的数据 视图发生变化后 立即刷新数据-->
+<!--{debounce:1000} -->
+<input type="text" ng-model="query" ng-model-options="{updateOn:'blur'}">
 <table class="table table-bordered table-hover">
     <tr class="text-success">
        <th>姓名</th>
@@ -23,7 +26,7 @@
        <th ng-click="language='english';flag=!flag">英语</th>
     </tr>
     <!--根据某一项中的math属性进行排序  是否倒序-->
-    <tr ng-repeat="arr in arrs | orderBy:language:flag">
+    <tr ng-repeat="arr in arrs | orderBy:language:flag | filter:{chinese:query}">
         <td>{{arr.name}}</td>
         <td>{{arr.math}}</td>
         <td>{{arr.chinese}}</td>
@@ -35,8 +38,8 @@
 <script>
     var app = angular.module('appModule',[]);
     app.controller('myCtrl',['$scope',function ($scope) {
-        $scope.arrs = [{name:'张三',chinese:100,math:90,english:30},{name:'李四',chinese:65,math:78,english:92},{name:'王五',chinese:20,math:80,english:70},{name:'赵六',chinese:30,math:100,english:30}]
-    }])
+        $scope.arrs = [{name:'张三',chinese:100,math:90,english:66},{name:'李四',chinese:65,math:78,english:88},{name:'王五',chinese:20,math:80,english:34},{name:'赵六',chinese:30,math:100,english:108}]
+    }]);
 </script>
 </body>
 </html>
