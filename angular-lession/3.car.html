@@ -1,11 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="zfModule">
 <head>
     <meta charset="UTF-8">
     <title>珠峰培训http://www.zhufengpeixun.cn</title>
     <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.css">
+    <style>
+        [ng-cloak]{
+            display: none;
+        }
+    </style>
 </head>
-<body>
+<body ng-controller="cartCtrl">
 <!--让页面居中 栅格化布局 12列组成-->
 <div class="container">
     <div class="row">
@@ -18,33 +23,68 @@
                     <th class="text-center">商品价格</th>
                     <th class="text-center">操作</th>
                 </tr>
-                <tr class="text-center">
-                    <td>iphone7plus 128g</td>
-                    <td>7199</td>
-                    <td><button class="btn btn-danger btn-xs">删除</button></td>
+                <tr class="text-center" ng-repeat="item in arrs" ng-cloak>
+                    <td>{{item.name}}</td>
+                    <td>{{item.price}}</td>
+                    <td>
+                        <button class="btn btn-danger btn-xs" ng-click="removeOne(item)">删除</button>
+                    </td>
                 </tr>
                 <tr>
                     <td colspan="3">
-                        <button class="btn btn-danger">删除全部</button>
+                        <button class="btn btn-danger" ng-click="removeAll()">删除全部</button>
+                        总价：5666
+                        <select >
+                            <option value="">1折</option>
+                            <option value="">5折</option>
+                        </select>
+                        折后价格：566.6
                     </td>
                 </tr>
             </table>
             <form role="form">
                 <div class="form-group">
                     <label for="productName" class="control-label">商品名称</label>
-                    <input type="text" class="form-control" id="productName" placeholder="请输入标题">
+                    <input type="text" class="form-control" id="productName" placeholder="请输入标题" ng-model="product.name">
                 </div>
                 <div class="form-group">
                     <label for="productPrice" class="control-label">商品价格</label>
-                    <input type="text" class="form-control" id="productPrice" placeholder="请输入价格">
+                    <input type="text" class="form-control" id="productPrice" placeholder="请输入价格" ng-model="product.price">
                 </div>
                 <div class="form-group">
-                    <button type="button" class="btn btn-primary">添加</button>
-                    <button type="reset" class="btn btn-warning">重置</button>
+                    <button type="button" class="btn btn-primary" ng-click="add()">添加</button>
+                    <button type="reset" class="btn btn-warning" ng-click="reset()">重置</button>
                 </div>
             </form>
         </div>
     </div>
 </div>
+<script src="angular.js"></script>
+<script>
+    var app = angular.module('zfModule', []);
+    app.controller("cartCtrl", ["$scope", "$rootScope", function ($scope) {
+        $scope.arrs = [{name: "iphone", price: 2888},{name: "iphone", price: 2888}];
+        $scope.removeOne = function (product) {
+            //数组的filter 返回true表示留下 返回false 删除，返回一个新的数组
+            $scope.arrs = $scope.arrs.filter(function (item) {
+                return item != product;
+            });
+        };
+        $scope.removeAll = function () {
+            $scope.arrs = [];
+        };
+        $scope.add = function () {
+            //这里直接将product放到数组中 ，之后我们再次更改product对象数组里的product也会更改
+            if($scope.product.name &&$scope.product.price ){
+                $scope.arrs.unshift($scope.product);
+                $scope.product = {};
+            }
+        };
+        $scope.reset = function () {
+            $scope.product = {};
+        };
+        $scope.coast = [{name:'打一折',val:0.1},{name:'打五折',val:0.5}]
+    }]);
+</script>
 </body>
 </html>
