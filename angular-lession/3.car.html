@@ -30,7 +30,10 @@
                         <button class="btn btn-danger btn-xs" ng-click="removeOne(item)">删除</button>
                     </td>
                 </tr>
-                <tr>
+                <tr ng-hide="arrs.length">
+                    <td colspan="3">暂无数据</td>
+                </tr>
+                <tr ng-show="arrs.length">
                     <td colspan="3">
                         <button class="btn btn-danger" ng-click="removeAll()">删除全部</button>
                         总价：{{total()}}
@@ -95,6 +98,12 @@
             return total;
         };
         $scope.coast = [{name:'打一折',val:0.1},{name:'打五折',val:0.5}]
+
+        //ng-show 是简单的控制样式  ng-if 如果为false则会移除dom
+
+        //如果频繁切换显示或者隐藏用ng-show/ng-hide
+        //ng-if如果定下来不再展示 或者判断数据是否存在用ng-if(会产生一个作用域)
+        //ng-if如果第一层不满足条件里面的代码不会继续执行
     }]);
 </script>
 </body>
