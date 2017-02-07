@@ -26,7 +26,7 @@
 <script src="angular.js"></script>
 <script>
     var app = angular.module('appModule', []);
-    //识别html代码
+    //识别html代码(抽离公用方法)
     app.filter('trustAsHtml',function ($sce) {
         return function (input) {
             //就是将内容编译成html 并且内容必须是字符串类型的
@@ -41,8 +41,8 @@
                 var reg = new RegExp(query);
                 //根据正则特换成想要的<span>1</span>00
                 return input.toString().replace(reg, function () {
-                    return `<span style="color: red">${arguments[0]}</span>`
-                })
+                    return `<span style="color: red">${arguments[0]}</span>`;
+                });
             } else {
                 return input;
             }
@@ -57,7 +57,7 @@
                 //根据正则特换成想要的<span>1</span>00
                 return $sce.trustAsHtml(input.toString().replace(reg, function () {
                     return `<span style="color: red">${arguments[0]}</span>`
-                }))
+                }));
             } else {
                 return $sce.trustAsHtml(input.toString());
             }
