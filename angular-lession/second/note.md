@@ -70,3 +70,46 @@ ng-disabled ng-readonly
 <div ng-class="{true:'className1',false:'className2'}[flag]"></div>
 <div ng-style="{fontSize:'40px',backgroundColor:'red'}">
 ```
+
+## 过滤器
+### 内置过滤器
+- 不会改变原数据，只是改变展示方式
+```
+{{'abcd' | uppercase}}
+{{'ABCD' | lowercase}}
+{{100000 | number}}
+<pre>{{ {name:1} | json:4}}</pre>
+{{1486437459166 | date:'yy-MM-dd hh时mm分ss秒'}}
+{{100 | currency:'£'}}
+{{'欢迎你来xxx' | limitTo:3}}
+{{[{name:1},{name:3},{name:2}] | orderBy:'name':true}}是否倒序
+{{[{name:1},{name:3},{name:2}] | filter:3}}
+```
+
+### 自定义过滤器
+过滤器和控制器没有关系，过滤器和控制器的声明方式是平齐的通过模块创建
+```
+app.filter('myFilter',function(){
+    return function(){
+        return '结果'
+    }
+})
+```
+
+## $sce编译html数据
+```
+<div ng-bind-html='str'></div>
+app.controller('myCtrl',function($scope,$sce){
+    $scope.str = $sce.trustAsHtml('<h1>1</h1>')
+})
+```
+
+## 抽取编译html代码
+```
+<div ng-bind-html="str | asHtml">
+app.filter('asHtml',function ($sce) {
+    return function (data) {
+        return $sce.trustAsHtml(data);
+    }
+});
+``` 
