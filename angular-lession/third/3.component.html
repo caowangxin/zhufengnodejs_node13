@@ -12,8 +12,8 @@
     <div class="row">
         <div class="col-md-12">
             <!--通过数据渲染不同的组件-->
-            <panel title="这是angularJs" information="info">这是内容1</panel>
-            <panel title="这是reactJs" information="info">这是内容2</panel>
+            <panel title="这是angularJs" information="info" f="fn(t)">这是内容1</panel>
+            <panel title="这是reactJs" information="info" f="fn(t)">这是内容2</panel>
         </div>
     </div>
 </div>
@@ -33,12 +33,13 @@
             restrict:'E',
             transclude:true,//将指令之间的内容用一个作用域保留下来
             templateUrl:'tmpl/panel.html',//ajax
-          /*  link:function (scope,element,attrs) { //attrs是所有属性的集合组成的对象
+            /*link:function (scope,element,attrs) { //attrs是所有属性的集合组成的对象
                  scope.title = attrs.title;
             },*/
             scope:{
                 title:'@',
-                author:'=information'
+                author:'=information',
+                say:'&f'
             },//scope:{}
              // 1.true代表的是产生作用域，但是和父级保持关系
              // 2.{}表示不再有任何关系，无法获取父级属性
