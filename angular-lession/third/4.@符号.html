@@ -9,8 +9,8 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <panel t="这是reactJs">这是内容2</panel>
-            <panel t="这是angularjs">这是内容1</panel>
+            <panel t="这是reactJs" qq="name">这是内容2</panel>
+            <panel t="这是angularjs" qq="name" >这是内容1</panel>
         </div>
     </div>
 </div>
@@ -24,9 +24,10 @@
          return {
             restrict:'E',
             transclude:true,
-            template:'<div>{{title}}</div>',
+            template:'<div>{{title}} {{name}}</div>',
             scope:{
                 //因为完全隔离了作用域，所有为了在作用域中的模板能取到数据，必须在指令中声明数据
+                name:'=qq',//这里取得是qq对应的字符串所代表的变量
                 title:'@t' //scope.title = attrs.t;如果引用的名字和当前名字相同则可以省略@后面的
             },//这里代表的是当前作用域
          }

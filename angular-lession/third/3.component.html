@@ -29,10 +29,12 @@
             restrict:'E',
             transclude:true,//将指令之间的内容用一个作用域保留下来
             templateUrl:'tmpl/panel.html',//ajax
-            link:function (scope,element,attrs) { //attrs是所有属性的集合组成的对象
+          /*  link:function (scope,element,attrs) { //attrs是所有属性的集合组成的对象
                  scope.title = attrs.title;
-            },
-            scope:{},//scope:{}
+            },*/
+            scope:{
+                title:'@'
+            },//scope:{}
              // 1.true代表的是产生作用域，但是和父级保持关系
              // 2.{}表示不再有任何关系，无法获取父级属性
              //不写scope  写true  写{}
