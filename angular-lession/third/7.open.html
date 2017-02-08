@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="appModule">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训http://www.zhufengpeixun.cn</title>
+    <style>
+        .title{width: 300px;height: 50px;background: orangered}
+        .content{width: 300px;height: 200px;background: #e4e4e4}
+    </style>
+</head>
+<body>
+<group>
+    <opener title="section1">content1</opener>
+    <opener title="section2">content2</opener>
+    <opener title="section3">content3</opener>
+</group>
+<script src="node_modules/angular/angular.js"></script>
+<script>
+    var app = angular.module('appModule',[]);
+    //平级的指令 不能实现交互
+    app.directive('group',function () {
+        return {
+
+        }
+    });
+    app.directive('opener',function () {
+        return {
+            templateUrl:'tmpl/open.html',
+            transclude:true,
+            link:function (scope,element,attrs) {//scope代表当前opener指令的作用域
+                scope.flag = false;
+            },
+            scope:{
+                title:'@',
+            }
+        }
+    })
+</script>
+</body>
+</html>
