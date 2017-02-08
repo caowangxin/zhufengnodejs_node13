@@ -21,6 +21,9 @@
 <script>
      var app = angular.module('appModule',[]);
      //默认指令不会产生作用域，产生一个作用域将title属性，存在自己的身上
+     app.run(function ($rootScope) {
+         $rootScope.name='zfpx';
+     });
      app.directive('panel',function () {
          return {
             restrict:'E',
@@ -29,7 +32,10 @@
             link:function (scope,element,attrs) { //attrs是所有属性的集合组成的对象
                  scope.title = attrs.title;
             },
-            scope:true,//scope:{}
+            scope:{},//scope:{}
+             // 1.true代表的是产生作用域，但是和父级保持关系
+             // 2.{}表示不再有任何关系，无法获取父级属性
+             //不写scope  写true  写{}
          }
      });
 </script>
