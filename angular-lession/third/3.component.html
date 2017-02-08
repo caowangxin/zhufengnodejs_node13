@@ -23,7 +23,10 @@
      //默认指令不会产生作用域，产生一个作用域将title属性，存在自己的身上
      app.run(function ($rootScope) {
          $rootScope.name='zfpx';
-         $rootScope.info = '作者'
+         $rootScope.info = '作者';
+         $rootScope.fn = function (title) {
+             alert(title)
+         }
      });
      app.directive('panel',function () {
          return {
