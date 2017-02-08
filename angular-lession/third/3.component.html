@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="appModule">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训http://www.zhufengpeixun.cn</title>
+    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.css">
+</head>
+<body>
+<!--组件的好处 复用-->
+<!--panel 组件-->
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <!--通过数据渲染不同的组件-->
+            <panel title="这是angularJs">这是内容1</panel>
+            <panel title="这是reactJs">这是内容2</panel>
+        </div>
+    </div>
+</div>
+<script src="node_modules/angular/angular.js"></script>
+<script>
+     var app = angular.module('appModule',[]);
+     //默认指令不会产生作用域，产生一个作用域将title属性，存在自己的身上
+     app.directive('panel',function () {
+         return {
+            restrict:'E',
+            transclude:true,//将指令之间的内容用一个作用域保留下来
+            templateUrl:'tmpl/panel.html',//ajax
+            link:function (scope,element,attrs) { //attrs是所有属性的集合组成的对象
+                 scope.title = attrs.title;
+            },
+            scope:true,//scope:{}
+         }
+     });
+</script>
+</body>
+</html>
