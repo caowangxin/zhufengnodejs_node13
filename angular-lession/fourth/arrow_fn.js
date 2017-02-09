@@ -16,3 +16,18 @@ obj.b();
 // const a = (a) => {return a};
 const arr = a => a;
 console.log(arr(2));
+function A() {
+    this["+"] = (a,b)=>a+b;
+}
+var a = new A;
+
+/*function valueFn(value) {return function valueRef() {return value;};}
+app.value('Calc',{
+    "+": (a,b)=>a+b
+});
+function value(name, val) { return factory(name, valueFn(val), false); }
+factory('Calc',function valueRef() {
+    return {
+        "+": (a,b)=>a+b
+    }
+});*/

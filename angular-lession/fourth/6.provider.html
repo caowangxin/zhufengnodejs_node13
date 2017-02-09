@@ -40,7 +40,9 @@
     app.controller('myCtrl',function ($scope,Note) {
         $scope.h ={name:'jw',age:18};
         Note.setStorage('l',1)
-    })
+    });
+
+    //跨页面存储 cookie 4k  localStorage 一直存储 sessionStorage 浏览器关掉就不存在了
 </script>
 </body>
 </html>
