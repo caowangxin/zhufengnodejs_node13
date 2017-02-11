@@ -60,3 +60,6 @@ Buffer.myConcat = function (list,totalLength) {
     //4.如果过短不考虑
 };
 console.log(Buffer.myConcat([buffer1,buffer2,buffer3]).toString());
+
+//判断类型 判断是不是buffer
+console.log(Buffer.isBuffer(new Buffer(3)));
