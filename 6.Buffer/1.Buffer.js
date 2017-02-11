@@ -1,6 +1,5 @@
 //Buffer可以表示一段内存空间
 console.log(Buffer); //构造函数 在node中是global上的属性
-
 //逢二进一
 //1. 1个字节 由8位二进制组成  在utf8中一个汉字3个字节组成，node不支持gbk
 // 1b = 8bit 1024b = 1kb
