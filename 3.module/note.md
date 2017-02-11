@@ -69,4 +69,23 @@ nrm add zhufeng http://172.18.0.199/
 ```
 nrm use zhufeng //回家后 切到别的源上
 ```
+
 ## bower安装前台的模块的
+
+## 发布包
+- package.json
+```
+npm init -y  //name不能存在过
+```
+- 使用npm的网
+```
+nrm use npm
+```
+- 注册账号，有账号表示登陆
+```
+npm addUser
+```
+- 发布
+```
+npm publish
+```
