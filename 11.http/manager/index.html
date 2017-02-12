@@ -46,7 +46,6 @@
         var obj = {name:username.value,password:password.value};
         xhr.send(JSON.stringify(obj));
     }
-
     var oUl = document.querySelector('.list-group');
     var xhr = new XMLHttpRequest();
     xhr.open('GET', '/getUser', true);
