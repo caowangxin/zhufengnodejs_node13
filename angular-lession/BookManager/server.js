@@ -18,12 +18,23 @@ http.createServer(function (req,res) {
         switch (req.method){//当前请求的方法 GET PUT DELETE POST(大写的)
             case 'GET':
                 if(id){
+
                 }else{//查询所有
                     res.setHeader('Content-Type','application/json;charset="utf8"');
                     res.end(JSON.stringify(books));
                 }
                 break;
             case 'POST':
+                var str = '';
+                req.on('data',function (data) {
+                    str+=data;
+                });
+                req.on('end',function () {
+                    var book = JSON.parse(str);//拿到前台传过来的这本书 给其增加id
+                    book.id = books.length?books[books.length-1].id+1:1;
+                    books.push(book);
+                    res.end(JSON.stringify(book));
+                });
                 break;
             case 'PUT':
                 break;
